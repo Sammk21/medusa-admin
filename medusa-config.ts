@@ -13,6 +13,15 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
   },
+  admin: {
+    vite: () => {
+      return {
+        server: {
+          allowedHosts: [".dividebzero.in"],
+        },
+      };
+    },
+  },
   modules: [
     {
       resolve: "@medusajs/medusa/file",
