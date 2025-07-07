@@ -15,6 +15,31 @@ module.exports = defineConfig({
   },
   modules: [
     {
+      resolve: "@medusajs/medusa/file",
+      options: {
+        providers: [
+          {
+            resolve: "@medusajs/medusa/file-s3",
+            id: "s3",
+            options: {
+              file_url: process.env.FILE_URL,
+              access_key_id: process.env.SUPABASE_ACCESS_KEY_ID,
+              secret_access_key: process.env.SUPABASE_SECRET_ACCESS_KEY,
+              region: process.env.SUPABASE_REGION,
+              bucket: process.env.SUPABASE_BUCKET,
+              endpoint: process.env.SUPABASE_ENDPOINT,
+              additional_client_config: {
+                forcePathStyle: true,
+              },
+
+              // ...
+            },
+          },
+        ],
+      },
+    },
+
+    {
       resolve: "@medusajs/medusa/payment",
       options: {
         providers: [
