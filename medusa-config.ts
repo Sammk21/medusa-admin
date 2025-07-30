@@ -37,30 +37,6 @@ module.exports = defineConfig({
         },
       },
     },
-    {
-      resolve: "@medusajs/medusa/file",
-      options: {
-        providers: [
-          {
-            resolve: "@medusajs/medusa/file-s3",
-            id: "s3",
-            options: {
-              file_url: process.env.FILE_URL,
-              access_key_id: process.env.SUPABASE_ACCESS_KEY_ID,
-              secret_access_key: process.env.SUPABASE_SECRET_ACCESS_KEY,
-              region: process.env.SUPABASE_REGION,
-              bucket: process.env.SUPABASE_BUCKET,
-              endpoint: process.env.SUPABASE_ENDPOINT,
-              additional_client_config: {
-                forcePathStyle: true,
-              },
-
-              // ...
-            },
-          },
-        ],
-      },
-    },
 
     {
       resolve: "@medusajs/medusa/payment",
@@ -97,6 +73,28 @@ module.exports = defineConfig({
         redis: {
           url: process.env.REDIS_URL,
         },
+      },
+    },
+    {
+      resolve: "@medusajs/medusa/file",
+      options: {
+        providers: [
+          {
+            resolve: "@medusajs/medusa/file-s3",
+            id: "s3",
+            options: {
+              file_url: process.env.S3_FILE_URL,
+              access_key_id: process.env.S3_ACCESS_KEY_ID,
+              secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+              region: process.env.S3_REGION,
+              bucket: process.env.S3_BUCKET,
+              endpoint: process.env.S3_ENDPOINT,
+              additional_client_config: {
+                forcePathStyle: true,
+              },
+            },
+          },
+        ],
       },
     },
   ],
