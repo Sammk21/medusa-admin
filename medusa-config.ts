@@ -3,6 +3,12 @@ import { loadEnv, defineConfig } from '@medusajs/framework/utils'
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 module.exports = defineConfig({
+  plugins: [
+    {
+      resolve: "@tsc_tech/medusa-plugin-product-seo",
+      options: {},
+    },
+  ],
   projectConfig: {
     workerMode: process.env.MEDUSA_WORKER_MODE as
       | "shared"
